@@ -28,7 +28,7 @@ public class RedisClusterManager {
 		return properties;
 	}
 	
-	private static JedisCluster getJedisCluster(){
+	public static synchronized JedisCluster getJedisCluster(){
 		Properties p = getClusterList();
 		logger.debug("cluster list is: " + p);
 		final String[] redisClusters = ((String) p.get("redis-cluster.url")).split(",");

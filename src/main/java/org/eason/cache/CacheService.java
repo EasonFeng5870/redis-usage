@@ -6,5 +6,7 @@ package org.eason.cache;
  *
  */
 public interface CacheService {
+	
+	
 
 }
