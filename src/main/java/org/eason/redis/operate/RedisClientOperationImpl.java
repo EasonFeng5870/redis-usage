@@ -1,5 +1,6 @@
 package org.eason.redis.operate;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
@@ -20,6 +21,10 @@ public class RedisClientOperationImpl implements RedisClientOperation {
 			logger.error(e.getMessage(), e);
 		}
 		return "";
+	}
+
+	public List<String> mget(String key, String... field) {
+		return jedisCluster.hmget("lx_eason_mset_1", field);
 	}
 
 }

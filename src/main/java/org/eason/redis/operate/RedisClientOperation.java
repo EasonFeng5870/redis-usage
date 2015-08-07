@@ -1,5 +1,6 @@
 package org.eason.redis.operate;
 
+import java.util.List;
 import java.util.Map;
 
 import org.eason.cache.CacheService;
@@ -13,7 +14,7 @@ import org.eason.cache.CacheService;
 public interface RedisClientOperation extends CacheService {
 	
 	public String mset(String key, Map<String, String> map);
-	
+	public List<String> mget(String key, String... field);
 	
 
 }
