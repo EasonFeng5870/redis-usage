@@ -12,7 +12,7 @@
 			<configuration>
 				<archive>
 					<manifest>
-						<mainClass>com.linxun.blessing.api.GodBlessing</mainClass>
+						<mainClass>org.eason.Main</mainClass>
 					</manifest>
 				</archive>
 				<descriptorRefs>

@@ -1,0 +1,11 @@
+Maven project.
+
+This project will help you to change all strings in DB you want to change. 
+
+1: open a dos/shell 
+2: cd redis-usage
+3: run " mvn assembly:assembly -Dmaven.test.skip=true"
+4: cd target
+5: run "java -jar redis-usage-jar-with-dependencies.jar"
+6: logs: ./logs/blessing.log
+

@@ -26,5 +26,9 @@ public class RedisClientOperationImpl implements RedisClientOperation {
 	public List<String> mget(String key, String... field) {
 		return jedisCluster.hmget("lx_eason_mset_1", field);
 	}
+	
+	public void set(String key, String data){
+		jedisCluster.setex(key,900*1000, data);
+	}
 
 }
