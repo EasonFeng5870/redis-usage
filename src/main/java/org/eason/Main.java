@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 import org.eason.redis.operate.RedisClientOperation;
 import org.eason.redis.operate.RedisClientOperationImpl;
+import org.junit.Test;
 
 public class Main {
 	
@@ -46,5 +47,54 @@ public class Main {
 		redisClientOperation.set(key, val);
 		
 	}
+	
+	@Test
+	public void testHashTags(){
+	    String key1 = "{eason.feng}.xxx";
+	    String val1 = "xxxxxx";
+	    
+	    String key2 = "{eason.feng}.d";
+	    String val2 = "dddddd";
+	    
+	    //keys {eason.feng} are the same, so it will store into same data node.
+	    
+	    redisClientOperation.set(key1, val1);
+	    redisClientOperation.set(key2, val2);
+	}
+	
+	@Test
+	public void testNX(){
+	    String key = "aaaxxxfff";
+	    String val = "bbbsss";
+	    redisClientOperation.set(key, val);
+	    val = "cccc";
+	    redisClientOperation.setOnlyNonExist(key, val);
+	    logger.info(redisClientOperation.get(key));
+	    redisClientOperation.set(key, val);
+	    logger.info(redisClientOperation.get(key));
+	}
+	
+	@Test
+	public void testExpire(){
+	    String key = "aaaxxxfff";
+	    String val = "bbbsss";
+	    redisClientOperation.setWithExpireTime(key, val, 5);
+	    try {
+		logger.info(redisClientOperation.get(key));
+		Thread.sleep(10000);
+	    } catch (InterruptedException e) {
+		e.printStackTrace();
+	    }
+	    logger.info(redisClientOperation.get(key));
+	}
+	
+	@Test
+	public void testLPush(){
+	    String key = "abcdedfs";
+//	    String val = "bbbsss";
+//	    redisClientOperation.lpush(key, val, val);
+	    logger.info(redisClientOperation.range(key, 0, 150));
+	}
+	
 
 }
